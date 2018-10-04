@@ -1,0 +1,5 @@
+syns(bad, terrible)
+types:entity/lang/pos/adjective/negative
+
+syns(great)
+types:entity/lang/pos/adjective/positive

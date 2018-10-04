@@ -1,0 +1,10 @@
+i [felt] [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+feel
+types:entity/lang/pos/modifier/sentiment_indicator/felt, entity/lang/synonym/felt
+
+felt
+types:entity/lang/pos/modifier/sentiment_indicator/felt, entity/lang/synonym/felt
+
+

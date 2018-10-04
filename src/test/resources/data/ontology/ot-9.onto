@@ -1,0 +1,8 @@
+[formula_1]
+types:entity/transport_term, entity/auto/car/formula_1_car
+
+formula 1
+types:entity/synonym/formula_1
+
+formula1
+types:entity/synonym/formula_1

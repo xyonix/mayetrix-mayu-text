@@ -1,0 +1,11 @@
+[have] you tried
+types:entity/indicator/suggestion
+
+have
+types:entity/lang/synonym/have
+
+tried
+types:entity/lang/synonym/tried
+
+you
+types:entity/lang/pos/pronoun/you

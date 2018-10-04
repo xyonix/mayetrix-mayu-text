@@ -1,0 +1,20 @@
+[i_am] feeling [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+good
+types:entity/lang/pos/adjective/positive
+
+i'm
+types:entity/lang/pos/pronoun/personal/possessive/i_am
+
+i am
+types:entity/lang/pos/pronoun/personal/possessive/i_am
+
+i feel [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+[i_am] feeling
+types:entity/indicator/personal_statement/sentiment
+
+great
+types:entity/lang/pos/adjective/positive

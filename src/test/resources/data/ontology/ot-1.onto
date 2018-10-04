@@ -1,0 +1,146 @@
+# ontology describing entities, taxonomical entity type relations, synonym relations and chained entities
+# 
+# examples:
+#
+# 'i like [entity/x]' adds repeated entity entries substituting [entity/x] with any entity with taxpath entity/x.
+#
+Can someone help me
+types:entity/indicator/help_solicitation
+
+[external_directive]
+types:entity/indicator/is_opinion
+
+they'll
+types:entity/lang/discourse/external_directive
+
+i like
+types:entity/indicator/personal_statement/sentiment/positive
+
+i feel [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+you will
+types:entity/lang/discourse/external_directive/you_directive
+
+you'll
+types:entity/lang/discourse/external_directive/you_directive
+
+they will
+types:entity/lang/discourse/external_directive
+
+i feel [so] [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+i [do] feel [so] [adjective/negative]
+types:entity/indicator/personal_statement/sentiment/negative
+
+[i_am] feeling [adjective/negative]
+types:entity/indicator/personal_statement/sentiment/negative
+
+great
+types:entity/lang/pos/adjective/positive
+
+good
+types:entity/lang/pos/adjective/positive
+
+wonderful
+types:entity/lang/pos/adjective/positive
+
+fabulous
+types:entity/lang/pos/adjective/positive
+
+blessed
+types:entity/lang/pos/adjective/positive
+
+terrific
+types:entity/lang/pos/adjective/positive
+
+bad
+types:entity/lang/pos/adjective/negative
+
+awful
+types:entity/lang/pos/adjective/negative
+
+terrible
+types:entity/lang/pos/adjective/negative
+
+blah
+types:entity/lang/pos/adjective/negative
+
+horrible
+types:entity/lang/pos/adjective/negative
+
+i'm
+types:entity/lang/pos/pronoun/personal/possessive/i_am
+
+i am
+types:entity/lang/pos/pronoun/personal/possessive/i_am
+
+there is
+types:entity/lang/pos/pronoun/personal/possessive/there_is
+
+there's
+types:entity/lang/pos/pronoun/personal/possessive/there_is
+
+[i_am] [hope] that
+types:entity/indicator/help_solicitation
+
+[i_am] [hope] [there_is]
+types:entity/indicator/help_solicitation
+
+hoping
+types:entity/lang/pos/verb/hope
+
+hopeful
+types:entity/lang/pos/verb/hope
+
+[i_am] [filler] [hope] [there_is]
+types:entity/indicator/help_solicitation
+
+[i_am] [filler] [hope] that
+types:entity/indicator/help_solicitation
+
+kind of
+types:entity/lang/discourse/filler
+
+sort of
+types:entity/lang/discourse/filler
+
+so
+types:entity/lang/pos/modifier/so
+
+completely
+types:entity/lang/pos/modifier/so, entity/lang/pos/modifier/do
+
+totally
+types:entity/lang/pos/modifier/so, entity/lang/pos/modifier/do
+
+entirely
+types:entity/lang/pos/modifier/so, entity/lang/pos/modifier/do
+
+utterly
+types:entity/lang/pos/modifier/so, entity/lang/pos/modifier/do
+
+do
+types:entity/lang/pos/modifier/do
+
+i [do] feel [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+i feel [so] [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+i [do] feel [so] [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+[i_am] feeling [adjective/positive]
+types:entity/indicator/personal_statement/sentiment/positive
+
+i feel [adjective/negative]
+types:entity/indicator/personal_statement/sentiment/negative
+
+i [do] feel [adjective/negative]
+types:entity/indicator/personal_statement/sentiment/negative
+
+i feel [so] [adjective/negative]
+types:entity/indicator/personal_statement/sentiment/negative
