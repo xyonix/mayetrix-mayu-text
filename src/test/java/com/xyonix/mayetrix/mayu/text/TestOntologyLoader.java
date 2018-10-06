@@ -69,4 +69,17 @@ public class TestOntologyLoader extends TestCase {
         assertNumWithTypes(tes, "i_am", 6);
     }
 
+    public void testLoadWithMetadata() throws IOException {
+        String[] files = new String[]{"/data/ontology/ot-11-metadata.onto"};
+        List<FoundEntity> tes = OntologyFileLoader.load(files, true); 
+        
+        for(FoundEntity te:tes) {
+        	if(te.getName().toLowerCase().contains("anoushka")) {
+        		assertTrue(te.getMetadata().size()==0);
+        	} else {
+        		assertTrue(te.getMetadata().size()>0);
+        	}
+            logger.info(te.toReadableString());
+        }
+    }
 }

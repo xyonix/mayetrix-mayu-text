@@ -3,6 +3,7 @@ package com.xyonix.mayetrix.mayu.text;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -45,6 +46,7 @@ public class OntologyFileLoader {
 		 * Add found entities for nodes in entity names
 		 */
 		for(FoundEntity foundEntity:rawEntities) {
+			
 			for(String t:entityTypesInNames) {
 				/**
 				 * Separates terms from brackets, i.e. dog from [dog]
@@ -81,6 +83,7 @@ public class OntologyFileLoader {
 					for(FoundEntity t:bin) {
 						foundEntity.setName(foundEntity.getName()+" "+t.getName());
 						foundEntity.mergePaths(t);
+						foundEntity.mergeMetadata(t);
 					}
 				}
 				foundEntity.setName(foundEntity.getName().trim().toLowerCase());
@@ -98,7 +101,9 @@ public class OntologyFileLoader {
 						for (FoundEntity fT:perm) {
 							FoundEntity tempE = new FoundEntity(fT.getName()+" "+fE.getName());
 							tempE.mergePaths(fE);
+							tempE.mergeMetadata(fE);
 							tempE.mergePaths(fT);
+							tempE.mergeMetadata(fT);
 							tempPerm.add(tempE);
 						}
 					}
@@ -118,6 +123,7 @@ public class OntologyFileLoader {
 	private static void addExpandedEntity(Map<String, FoundEntity> expandedEntities, FoundEntity foundEntity) {
 		if(expandedEntities.containsKey(foundEntity.getName())) {
 			foundEntity.mergePaths(expandedEntities.get(foundEntity.getName()));
+			foundEntity.mergeMetadata(expandedEntities.get(foundEntity.getName()));
 		}
 		expandedEntities.put(foundEntity.getName(), foundEntity);
 	}
@@ -141,19 +147,27 @@ public class OntologyFileLoader {
 		FoundEntity foundEntity = null;
 		while ((line = inputStream.readLine()) != null) {
 			if (line.trim().length() > 0 && !line.startsWith("#")) {
-				if(!line.trim().startsWith("types:")) {
+				if(!line.trim().startsWith("types:") && !line.trim().startsWith("metadata:") ) {
 					foundEntity = new FoundEntity(line.trim());
+				} else if (line.trim().startsWith("metadata:")) {
+					String[] parts = line.substring(9).trim().split(", ");
+					for(String p:parts) {
+						String[] kv = p.trim().split(":");
+						foundEntity.addMetadata(kv[0], kv[1]);
+					}
 				} else {
 					String[] parts = line.substring(6).trim().split(", ");
 					for(String p:parts) {
 						foundEntity.addPath(p);
 					}
+
 					if(localEntityMap.containsKey(foundEntity.getName().toLowerCase())) {
 						logger.info("Dup found, merging taxpaths for: " + foundEntity.getName());
 						FoundEntity originalFoundEntity = localEntityMap.get(foundEntity.getName().toLowerCase());
 						logger.info("Orig="+originalFoundEntity.toReadableString());
 						logger.info("New="+foundEntity.toReadableString());
 						originalFoundEntity.mergePaths(foundEntity);
+						originalFoundEntity.mergeMetadata(foundEntity);
 						logger.info("Merged="+originalFoundEntity.toReadableString());
 						foundEntity=originalFoundEntity;
 					}
@@ -206,6 +220,7 @@ class NamedWordToken {
 		} else {
 			FoundEntity te = new FoundEntity(rawName);
 			te.mergePaths(sourceFoundEntity);
+			te.mergeMetadata(sourceFoundEntity);
 			permutations.add(te);
 		}
 		return permutations;

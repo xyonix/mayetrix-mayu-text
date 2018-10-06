@@ -1,0 +1,10 @@
+James Dean
+metadata:wikiurl:James_Dean
+types:entity/person/actor
+
+Barack Obama
+metadata:wikiurl:Barack_Obama, party_affiliation:Democrat
+types:entity/person/politician
+
+Anoushka Shankar
+types:entity/person/musician

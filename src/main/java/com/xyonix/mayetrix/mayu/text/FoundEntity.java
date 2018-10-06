@@ -27,13 +27,22 @@ public class FoundEntity implements Serializable {
 	protected Map<String, TaxPath> paths = new HashMap<String, TaxPath>();
 
 	private Map<String, FoundEntity> resolvedAnaphorMap = new HashMap<String, FoundEntity>();
-
+	private Map<String, String> metadata = new HashMap<String,String>();
+	
 	public void setCount(int count) {
 		this.count=count;
 	}
 
 	public int getCount() {
 		return count;
+	}
+	
+	public void addMetadata(String name, String value) {
+		this.metadata.put(name, value);
+	}
+	
+	public Map<String, String> getMetadata() {
+		return this.metadata;
 	}
 
 	public void setConfidence(float confidence) {
@@ -143,6 +152,7 @@ public class FoundEntity implements Serializable {
 			return;
 
 		mergePaths(e);
+		mergeMetadata(e);
 		setDisplayName(e.getDisplayName());
 	}
 
@@ -151,11 +161,20 @@ public class FoundEntity implements Serializable {
 			addPath(tp.getName());
 		}
 	}
+	
+	public void mergeMetadata(FoundEntity e) {
+		for(String k:e.getMetadata().keySet()) {
+			addMetadata(k,e.getMetadata().get(k));
+		}
+	}
 
 	public FoundEntity clone() {
 		FoundEntity e = new FoundEntity(getName());
 		for(TaxPath tp:getPaths()) {
 			e.addPath(tp.getName());
+		}
+		for(String k:getMetadata().keySet()) {
+			e.addMetadata(k,getMetadata().get(k));
 		}
 		e.setDisplayName(getDisplayName());
 		for(FoundEntity ant:getResolvedAnaphor()) {
@@ -296,6 +315,17 @@ public class FoundEntity implements Serializable {
 			}
 			sb.append("] ");
 		}
+		if(getMetadata().size()>0) {
+			sb.append("[");
+			boolean first=true;
+			for(String k:getMetadata().keySet()) {
+				if(!first)
+					sb.append(", ");
+				sb.append(k+":"+getMetadata().get(k));
+				first=false;
+			}
+			sb.append("] ");
+		}
 		return sb.toString();
 	}
 
@@ -337,6 +367,16 @@ public class FoundEntity implements Serializable {
 				if(!first)
 					sb.append(", ");
 				sb.append(tp.getName());
+				first=false;
+			}
+		}
+		if(this.metadata.size()>0) {
+			sb.append("metadata:");
+			boolean first=true;
+			for(String k:getMetadata().keySet()) {
+				if(!first)
+					sb.append(", ");
+				sb.append(k+":"+getMetadata().get(k));
 				first=false;
 			}
 		}
