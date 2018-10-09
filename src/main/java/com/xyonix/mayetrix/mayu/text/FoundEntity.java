@@ -371,7 +371,7 @@ public class FoundEntity implements Serializable {
 			}
 		}
 		if(this.metadata.size()>0) {
-			sb.append("metadata:");
+			sb.append("\nmetadata:");
 			boolean first=true;
 			for(String k:getMetadata().keySet()) {
 				if(!first)
