@@ -4,7 +4,7 @@
     <groupId>com.xyonix.mayetrix.mayu</groupId>
     <artifactId>mayetrix-mayu-text</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <name>mayetrix-mayu-text</name>
     <url>http://maven.apache.org</url>
     <licenses>
@@ -59,17 +59,17 @@
         <dependency>
             <groupId>com.xyonix.mayetrix.mayu</groupId>
             <artifactId>mayetrix-mayu-wordnet</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xyonix.mayetrix.mayu</groupId>
             <artifactId>mayetrix-mayu-data</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.xyonix.mayetrix.mayu</groupId>
             <artifactId>mayetrix-mayu-core</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         
         <!-- start logging dependencies -->
